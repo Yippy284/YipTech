@@ -19,6 +19,4 @@ I understand that technology problems don't always happen during regular busines
 
 ### Get Started
 
-Don't let technology problems slow you down! Whether you need a simple device setup or complex troubleshooting, I'm here to help. Call or email me today for a consultation, and let's get your tech working the way it should. 
-
-Your satisfaction is my priority – that's the YipTech promise!
+Don't let technology problems slow you down! Whether you need a simple device setup or complex troubleshooting, I'm here to help. Call or email me today for a consultation, and let's get your tech working the way it should. Obligation free quotes. Your satisfaction is my priority.
