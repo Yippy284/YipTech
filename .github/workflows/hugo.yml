@@ -2,7 +2,8 @@ name: Deploy Hugo to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -14,22 +15,23 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout main
+        uses: actions/checkout@v4
+
       - name: Install Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: latest
           extended: true
 
-      - name: Build
+      - name: Build site
         run: hugo --minify
 
-      - name: Debug: Check built files
+      - name: Verify index.html
         run: |
           ls -la public/
           if [ ! -f public/index.html ]; then
-            echo "Error: index.html not found in public/"
+            echo "Error: public/index.html not found!"
             exit 1
           fi
 
@@ -38,9 +40,9 @@ jobs:
           touch public/.nojekyll
           echo "www.yiptech.com.au" > public/CNAME
 
-      - name: Deploy
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: public
           force: true
