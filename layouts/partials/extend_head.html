@@ -1,0 +1,48 @@
+<style>
+/* Hide the main profile title - Corrected selector based on actual HTML structure */
+.main .profile .profile_inner > h1:first-of-type {
+    display: none;
+}
+</style>
+
+<style>
+/* Invert logo colors in dark mode */
+body.dark .profile_inner img[alt="profile image"] {
+    filter: invert(100%); /* Inverts the colors */
+}
+
+/* Optional: Add a smooth transition for the filter change */
+.profile_inner img[alt="profile image"] {
+    transition: filter 0.4s ease; /* Adjust time (0.3s) as desired */
+}
+</style>
+
+<style>
+/* Define the custom font - Assumes font file is in static/fonts/ */
+@font-face {
+    font-family: 'MalvaMedium'; /* Choose a name */
+    src: url('/fonts/MalvaMedium.otf') format('opentype'); /* Path relative to the final site root */
+    /* Consider adding WOFF2, WOFF for broader compatibility */
+    /* src: url('/fonts/YourFontName.woff2') format('woff2'),
+           url('/fonts/YourFontName.woff') format('woff'),
+           url('/fonts/YourFontName.otf') format('opentype'); */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MalvaRegular'; /* Choose a name */
+    src: url('/fonts/MalvaRegular.otf') format('opentype'); /* Path relative to the final site root */
+    /* Consider adding WOFF2, WOFF for broader compatibility */
+    /* src: url('/fonts/YourFontName.woff2') format('woff2'),
+           url('/fonts/YourFontName.woff') format('woff'),
+           url('/fonts/YourFontName.otf') format('opentype'); */
+    font-weight: normal;
+    font-style: normal;
+}
+
+}/* Apply the font to the header title */
+.logo a {
+    font-family: 'MalvaRegular', /* Fallback fonts */ sans-serif;
+}
+</style>
