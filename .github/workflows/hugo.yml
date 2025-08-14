@@ -1,22 +1,12 @@
-name: Deploy Hugo to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
+
+      - name: List files
+        run: |
+          ls -la
+          echo "Config: $(ls config.* 2>/dev/null || echo 'none')"
+          echo "Themes: $(ls -d themes/* 2>/dev/null || echo 'none')"
 
       - name: Install Hugo
         uses: peaceiris/actions-hugo@v2
@@ -25,9 +15,12 @@ jobs:
           extended: true
 
       - name: Build site
-        run: hugo --minify
+        run: |
+          hugo --minify --verbose
+          echo "Hugo exit code: $?"
 
       - name: Verify index.html
+        if: success()
         run: |
           ls -la public/
           if [ ! -f public/index.html ]; then
@@ -36,11 +29,13 @@ jobs:
           fi
 
       - name: Add .nojekyll and CNAME
+        if: success()
         run: |
           touch public/.nojekyll
           echo "www.yiptech.com.au" > public/CNAME
 
       - name: Deploy to gh-pages
+        if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
