@@ -1,8 +1,16 @@
-baseURL: "https://yiptech.com.au"
 title: YipTech
 pagination:
   pagerSize: 5
 theme: PaperMod
+
+# Important for GitHub Pages in subdirectory
+relativeURLs: true
+canonifyURLs: false
+
+publishDir: public
+
+params:
+  env: production # Ensures production mode (e.g. Google Analytics loads)
 
 enableRobotsTXT: true
 buildDrafts: false
