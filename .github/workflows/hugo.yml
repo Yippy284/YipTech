@@ -28,11 +28,19 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Add .nojekyll
-        run: touch public/.nojekyll
+      - name: Debug: Check built files
+        run: |
+          ls -la public/
+          test -f public/index.html || (echo "❌ Missing index.html!" && exit 1)
+
+      - name: Add .nojekyll and CNAME
+        run: |
+          touch public/.nojekyll
+          echo "www.yiptech.com.au" > public/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          force: true  # 👈 Critical: forces update
