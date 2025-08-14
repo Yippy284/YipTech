@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://yiptech.com.au/sitemap.xml
