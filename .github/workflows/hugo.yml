@@ -28,7 +28,10 @@ jobs:
       - name: Debug: Check built files
         run: |
           ls -la public/
-          test -f public/index.html || (echo "❌ Missing index.html!" && exit 1)
+          if [ ! -f public/index.html ]; then
+            echo "Error: index.html not found in public/"
+            exit 1
+          fi
 
       - name: Add .nojekyll and CNAME
         run: |
