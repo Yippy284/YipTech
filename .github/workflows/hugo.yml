@@ -37,8 +37,8 @@ jobs:
 
       - name: Build site
         run: |
-          hugo --minify --verbose
-          echo "Hugo exit code: $?"
+          hugo version
+          hugo --minify --logLevel=debug
 
       - name: Verify index.html
         if: success()
