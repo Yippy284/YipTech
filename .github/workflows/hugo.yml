@@ -1,26 +1,36 @@
 name: Deploy Hugo to GitHub Pages
-permissions:  # Add this block!
-  contents: write
-  pages: write
-  id-token: write
+
 on:
   push:
     branches: [main]
+
+# These permissions are needed for gh-pages deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      - uses: actions/checkout@v4  # Check out your repo
+      - uses: actions/checkout@v4
       
-      - uses: actions/setup-go@v5  # Install Go (required for Hugo)
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          go-version: '1.21'
-      
-      - run: go install github.com/gohugoio/hugo@latest  # Install Hugo
-      
-      - run: hugo --minify  # Build your site (minifies output)
-      
-      - uses: peaceiris/actions-gh-pages@v3  # Deploy to GH Pages
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # Where Hugo generates files
+          publish_dir: ./public
