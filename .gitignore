@@ -1,0 +1,7 @@
+# Hugo generated files
+/public/
+resources/_gen/
+
+# OS & Editor files
+.DS_Store
+
