@@ -75,3 +75,8 @@ menu:
       name: Contact
       url: /contact/
       weight: 30
+
+caches:
+  images:
+    dir: :cacheDir/images
+
