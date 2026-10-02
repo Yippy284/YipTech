@@ -49,7 +49,7 @@ params:
         # yiptech-icon: "/static/img/YipTech-Icon.png"
 
     label:
-        text: "Home"
+        text: ""
         icon: /img/YipTech-Logo.png
         iconHeight: 30
 
