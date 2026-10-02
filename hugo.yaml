@@ -49,8 +49,8 @@ params:
         # yiptech-icon: "/static/img/YipTech-Icon.png"
 
     label:
-        text: ""
-        icon: /img/YipTech-Logo.png
+        text: "Home"
+        icon: /static/img/YipTech-Logo.png
         iconHeight: 30
 
     profileMode:
