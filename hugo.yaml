@@ -50,7 +50,7 @@ params:
 
     label:
         text: "Home"
-        icon: /static/img/YipTech-Logo.png
+        # icon: /img/YipTech-Logo.png
         iconHeight: 30
 
     profileMode:
