@@ -9,9 +9,6 @@ canonifyURLs: false
 
 publishDir: public
 
-params:
-  env: production # Ensures production mode (e.g. Google Analytics loads)
-
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
@@ -23,6 +20,8 @@ minify:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    author: "YipTech"
+    
     defaultTheme: auto
     disableThemeToggle: false
 
@@ -51,7 +50,7 @@ params:
 
     label:
         text: "Home"
-        icon: /static/img/YipTech-Logo.png
+        icon: /img/YipTech-Logo.png
         iconHeight: 30
 
     profileMode:
